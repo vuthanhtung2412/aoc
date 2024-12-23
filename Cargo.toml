@@ -1,0 +1,11 @@
+[package]
+name = "main"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reqwest = { version = "0.12", features = ["blocking"] }
+tokio = { version = "1.42", features = ["full"] }
+scraper = "0.22"
+html2md = "0.1"
+chrono = "0.4.39"
