@@ -1,7 +1,6 @@
 
 --- Day 2: Red-Nosed Reports ---
 ----------
-
 Fortunately, the first location The Historians want to search isn't a long walk from the Chief Historian's office.
 
 While the [Red-Nosed Reindeer nuclear fusion/fission plant](/2015/day/19) appears to contain no sign of the Chief Historian, the engineers there run up to you as soon as they see you. Apparently, they *still* talk about the time Rudolph was saved through molecular synthesis from a single electron.
@@ -19,7 +18,6 @@ The unusual data (your puzzle input) consists of many *reports*, one report per 
 1 3 6 7 9
 
 ```
-
 This example data contains six reports each containing five levels.
 
 The engineers are trying to figure out which reports are *safe*. The Red-Nosed reactor safety systems can only tolerate levels that are either gradually increasing or gradually decreasing. So, a report only counts as safe if both of the following are true:
@@ -37,3 +35,4 @@ In the example above, the reports can be found safe or unsafe by checking those 
 So, in this example, `*2*` reports are *safe*.
 
 Analyze the unusual data from the engineers. *How many reports are safe?*
+

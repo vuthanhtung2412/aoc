@@ -5,10 +5,21 @@ use std::fs;
 use std::io::Write;
 use std::path::Path;
 use std::path::PathBuf;
+
 fn main() -> Result<(), Box<dyn Error>> {
-    get_date()?;
+    clone_iter();
     Ok(())
 }
+
+#[allow(dead_code)]
+fn clone_iter() {
+    use itertools::Itertools;
+    let xs = vec![0, 1, 2, 3];
+
+    let (mut t1, mut t2) = xs.into_iter().tee();
+    println!("{}",t1.next().unwrap());
+    println!("{}",t2.next().unwrap());
+} 
 
 #[allow(dead_code)]
 fn get_date() -> Result<(), Box<dyn Error>> {
