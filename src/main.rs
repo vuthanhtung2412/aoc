@@ -45,6 +45,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     #[allow(unused_assignments)]
     let mut is_part2 = false;
 
+    // Create questions markdown files
     if response.status().is_success() {
         let document = Html::parse_document(&response.text()?);
         let question_selector = Selector::parse("article.day-desc").unwrap();
@@ -74,6 +75,24 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         };
     } else {
         return Err(format!("Failed to download question: {}", response.status()).into());
+    }
+
+    // Put template of new day
+    if !is_part2 {
+        // Read the template from a file
+        let current_file_path = Path::new(file!());
+        let path = current_file_path.parent().unwrap().join("template.rs");
+        let template = fs::read_to_string(path)?;
+
+        let result = template
+            .replace("<year>", &year.to_string())
+            .replace("<day>", &day.to_string());
+
+        write(
+            &format!("rust/aoc{}/src", year),
+            &format!("day{}.rs", day),
+            &result,
+        )?;
     }
 
     // Download the input

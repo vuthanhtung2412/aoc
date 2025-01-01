@@ -4,8 +4,8 @@
 
 pub fn part1() -> Result<(), Box<dyn std::error::Error>> {
     // let current_file_path = Path::new(file!());
-    // let year = 0;
-    // let day = 0;
+    // let year = 2024;
+    // let day = 3;
     // let path = current_file_path
     //     .parent()
     //     .unwrap()
@@ -18,13 +18,15 @@ pub fn part1() -> Result<(), Box<dyn std::error::Error>> {
     // let file = File::open(path)?;
     // let reader = io::BufReader::new(file);
 
+    // Your solution goes here
+
     Ok(())
 }
 
 pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
     // let current_file_path = Path::new(file!());
-    // let year = 0;
-    // let day = 0;
+    // let year = 2024;
+    // let day = 3;
     // let path = current_file_path
     //     .parent()
     //     .unwrap()
@@ -36,6 +38,8 @@ pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
     //
     // let file = File::open(path)?;
     // let reader = io::BufReader::new(file);
-    
+
+    // Your solution goes here
+
     Ok(())
 }
