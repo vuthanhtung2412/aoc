@@ -1,8 +1,6 @@
 
 --- Day 3: Mull It Over ---
-
 ----------
-
 "Our computers are having issues, so I have no idea if we have any Chief Historians in stock! You're welcome to check the warehouse, though," says the mildly flustered shopkeeper at the [North Pole Toboggan Rental Shop](/2020/day/2). The Historians head out to take a look.
 
 The shopkeeper turns to you. "Any chance you can see why our computers are having issues again?"
@@ -18,7 +16,7 @@ For example, consider the following section of corrupted memory:
 ```
 x*mul(2,4)*%&mul[3,7]!@^do_not_*mul(5,5)*+mul(32,64]then(*mul(11,8)mul(8,5)*)
 ```
-
 Only the four highlighted sections are real `mul` instructions. Adding up the result of each instruction produces `*161*` (`2*4 + 5*5 + 11*8 + 8*5`).
 
 Scan the corrupted memory for uncorrupted `mul` instructions. *What do you get if you add up all of the results of the multiplications?*
+
