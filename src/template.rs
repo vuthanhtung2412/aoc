@@ -10,7 +10,7 @@ pub fn part1() -> Result<(), Box<dyn std::error::Error>> {
     //     .parent()
     //     .unwrap()
     //     .join(format!(
-    //         // "../../../questions/{}/{}/example1.txt"),
+    //         // "../../../questions/{}/{}/example1.txt",
     //         "../../../questions/{}/{}/input1.txt",
     //         year, day
     //     ));
@@ -31,7 +31,7 @@ pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
     //     .parent()
     //     .unwrap()
     //     .join(format!(
-    //         // "../../../questions/{}/{}/example2.txt"),
+    //         // "../../../questions/{}/{}/example2.txt",
     //         "../../../questions/{}/{}/input2.txt",
     //         year, day
     //     ));
