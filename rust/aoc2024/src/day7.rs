@@ -56,13 +56,13 @@ fn possible(target: u64, arr: &[u64]) -> bool {
     let mut eval = *arr.first().unwrap();
     println!("target {}, arr {:?}", target, arr);
     for i in 0..usize::pow(2, (arr.len() - 1) as u32) {
-        for j in 0..arr.len() - 1 {
+        (1..arr.len()).for_each(|j| {
             if (i >> j) & 1 == 1 {
-                eval *= arr[j + 1]
+                eval *= arr[j]
             } else {
-                eval += arr[j + 1];
+                eval += arr[j];
             }
-        }
+        });
         if eval == target {
             println!("true : {:b}", i);
             return true;
@@ -115,22 +115,81 @@ fn possible(target: u64, arr: &[u64]) -> bool {
 // }
 
 pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
-    // let current_file_path = Path::new(file!());
-    // let year = 2024;
-    // let day = 7;
-    // let path = current_file_path
-    //     .parent()
-    //     .unwrap()
-    //     .join(format!(
-    //         // "../../../questions/{}/{}/example2.txt",
-    //         "../../../questions/{}/{}/input2.txt",
-    //         year, day
-    //     ));
-    //
-    // let file = File::open(path)?;
-    // let reader = io::BufReader::new(file);
+    let current_file_path = Path::new(file!());
+    let year = 2024;
+    let day = 7;
+    let path = current_file_path.parent().unwrap().join(format!(
+        // "../../../questions/{}/{}/example2.txt",
+        "../../../questions/{}/{}/input2.txt",
+        year,
+        day
+    ));
+
+    let file = File::open(path)?;
+    let reader = io::BufReader::new(file);
 
     // Your solution goes here
 
+    let lines = reader.lines();
+    let mut res: u64 = 0;
+
+    for l in lines {
+        let line = l?;
+        let (t, a) = line
+            .split_once(":")
+            .ok_or("input mal mal-formated where is the colon")?;
+
+        let arr: Vec<u64> = a
+            .split_whitespace()
+            .map(|num| num.parse().unwrap())
+            .collect();
+        let target = t.parse::<u64>()?;
+        if possible2(target, &arr) {
+            res += target;
+        }
+    }
+    println!("{}", res);
     Ok(())
+}
+
+fn possible2(target: u64, arr: &[u64]) -> bool {
+    if arr.is_empty() {
+        return target == 0;
+    }
+    if arr.len() == 1 {
+        return target == *arr.first().unwrap();
+    }
+
+    let mut eval = *arr.first().unwrap();
+    for i in 0..usize::pow(3, (arr.len() - 1) as u32) {
+        let mut quotient = i;
+        let mut j = 1;
+        while j < arr.len() {
+            match quotient % 3 {
+                0 => eval += arr[j],
+                1 => eval *= arr[j],
+                _ => eval = eval * u64::pow(10, u64_log10(arr[j])) + arr[j],
+            }
+            quotient /= 3;
+            j+=1
+        }
+        if eval == target {
+            return true;
+        }
+        eval = *arr.first().unwrap();
+    }
+    false
+}
+
+fn u64_log10(x: u64) -> u32 {
+    let mut count = 0;
+    let mut quotient = x;
+    loop {
+        count += 1;
+        quotient /= 10;
+        if quotient == 0 {
+            break;
+        }
+    }
+    count
 }
