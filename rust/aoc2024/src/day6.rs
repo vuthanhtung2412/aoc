@@ -6,6 +6,12 @@ use std::path::Path;
 // y.x
 const DIRS: [(i32, i32); 4] = [(-1, 0), (0, 1), (1, 0), (0, -1)];
 
+// TODO: Improve direction rotation algorithm
+// fn rotDir(d: (int,int)): (int, int) =
+//     # Turn right 90° (multiply by -i)
+//     # (0, -1) -> (1, 0) -> (0, 1) -> (-1, 0)
+//     return (-d[1], d[0])
+
 pub fn part1() -> Result<(), Box<dyn std::error::Error>> {
     let current_file_path = Path::new(file!());
     let year = 2024;
@@ -106,6 +112,8 @@ pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
     // let reader = io::BufReader::new(file);
 
     // Your solution goes here
+    // TODO: One insight is that in order for the guard to loop the new obstacle must be in the
+    // guard path
 
     Ok(())
 }

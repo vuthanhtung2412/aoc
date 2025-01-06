@@ -88,6 +88,7 @@ pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
     // let reader = io::BufReader::new(file);
 
     // Your solution goes here
+    // TODO: This can be done with sorting algorithm and custom compare method
 
     Ok(())
 }
