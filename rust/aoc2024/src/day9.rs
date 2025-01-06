@@ -118,7 +118,7 @@ pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
         .enumerate()
     {
         let num = n? as usize;
-        match i % 2 == 0 { 
+        match i % 2 == 0 {
             true => files.push(num),
             false => spaces.push(num),
         }
@@ -131,10 +131,10 @@ pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
 
     // Shift files
     for (i, f) in files.iter().rev().enumerate() {
-        for j in 0..(files.len()-1-i) {
+        for j in 0..(files.len() - 1 - i) {
             if spaces.get(j).unwrap() >= f {
-                is_moved[files.len()-1-i] = true;
-                fill[j].push(files.len()-1-i);
+                is_moved[files.len() - 1 - i] = true;
+                fill[j].push(files.len() - 1 - i);
                 spaces[j] -= f;
                 break;
             }
@@ -149,17 +149,13 @@ pub fn part2() -> Result<(), Box<dyn std::error::Error>> {
             if is_moved[i / 2] {
                 counter += files[i / 2];
             } else {
-                for _ in 0..files[i / 2] {
-                    res += (i/2) * counter;
-                    counter += 1;
-                }
+                res += (i / 2) * files[i / 2] * (counter * 2 + files[i / 2] - 1) / 2;
+                counter += files[i / 2];
             }
         } else if !fill[i / 2].is_empty() {
             for &file in fill.get(i / 2).unwrap() {
-                for _ in 0..files[file] {
-                    res += file * counter;
-                    counter += 1
-                }
+                res += file * files[file] * (counter * 2 + files[file] - 1) / 2;
+                counter += files[file];
             }
             counter += spaces[i / 2];
         } else {
